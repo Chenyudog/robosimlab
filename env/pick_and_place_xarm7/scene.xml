@@ -1,0 +1,84 @@
+<mujoco model="xarm7 pick and place">
+  <include file="xarm7.xml"/>
+
+  <option timestep="0.002" integrator="implicitfast"/>
+
+  <visual>
+    <headlight diffuse="0.5 0.5 0.5" ambient="0.35 0.35 0.35" specular="0.1 0.1 0.1"/>
+    <rgba haze="0.12 0.16 0.22 1"/>
+    <global azimuth="135" elevation="-22" offwidth="1280" offheight="720"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.18 0.25 0.38" rgb2="0.02 0.03 0.06" width="512" height="3072"/>
+    <texture type="2d" name="floor_grid" builtin="checker" mark="edge" rgb1="0.08 0.12 0.17" rgb2="0.14 0.22 0.30"
+      markrgb="0.6 0.75 0.9" width="320" height="320"/>
+    <material name="floor_mat" texture="floor_grid" texuniform="true" texrepeat="8 8" reflectance="0.18"/>
+    <material name="table_top" rgba="0.95 0.68 0.18 1" specular="0.35" shininess="0.4"/>
+    <material name="table_edge" rgba="0.05 0.42 0.62 1" specular="0.25" shininess="0.35"/>
+    <material name="basket_cyan" rgba="0.00 0.82 1.00 0.92" specular="0.25" shininess="0.45"/>
+    <material name="basket_magenta" rgba="1.00 0.16 0.62 0.92" specular="0.25" shininess="0.45"/>
+    <material name="cola_dark" rgba="0.04 0.025 0.018 1" specular="0.45" shininess="0.7"/>
+    <material name="cola_label" rgba="0.95 0.02 0.02 1" specular="0.25" shininess="0.45"/>
+    <material name="cola_cap" rgba="0.02 0.02 0.025 1" specular="0.35" shininess="0.6"/>
+    <material name="apple_red" rgba="1.00 0.04 0.02 1" specular="0.28" shininess="0.5"/>
+    <material name="apple_leaf" rgba="0.05 0.55 0.12 1"/>
+    <material name="stem" rgba="0.35 0.16 0.05 1"/>
+    <material name="target_yellow" rgba="1.0 0.93 0.20 0.45"/>
+    <mesh name="soda_can_mesh" file="objects/meshes/can.msh"/>
+    <mesh name="lemon_mesh" file="objects/meshes/lemon.msh" scale="1.5 1 1"/>
+    <texture name="soda_tex" type="2d" file="assets/objects/textures/soda.png"/>
+    <texture name="lemon_tex" type="2d" file="assets/objects/textures/lemon.png"/>
+    <material name="soda_can_mat" reflectance="0.65" texrepeat="5 5" texture="soda_tex" texuniform="true"/>
+    <material name="lemon_mat" reflectance="0.65" texrepeat="60 50" texture="lemon_tex" texuniform="true"/>
+  </asset>
+
+  <worldbody>
+    <light name="key_light" pos="0.35 -0.8 1.8" dir="-0.2 0.45 -1" directional="true" diffuse="0.85 0.82 0.78"/>
+    <light name="fill_light" pos="1.2 0.7 1.1" dir="-0.8 -0.35 -0.7" directional="true" diffuse="0.28 0.34 0.45"/>
+    <camera name="overview_camera" pos="1.25 -1.25 0.95" xyaxes="0.707107 0.707107 0 -0.332182 0.332182 0.882645" fovy="50"/>
+
+    <geom name="floor" type="plane" size="0 0 0.05" material="floor_mat"/>
+
+    <body name="table" pos="0.62 0 0.26">
+      <geom name="table_top" type="box" size="0.38 0.34 0.035" material="table_top" friction="1.2 0.005 0.0001"/>
+      <geom name="front_edge" type="box" pos="0 -0.36 0.01" size="0.40 0.012 0.05" material="table_edge"/>
+      <geom name="back_edge" type="box" pos="0 0.36 0.01" size="0.40 0.012 0.05" material="table_edge"/>
+      <geom name="left_edge" type="box" pos="-0.40 0 0.01" size="0.012 0.34 0.05" material="table_edge"/>
+      <geom name="right_edge" type="box" pos="0.40 0 0.01" size="0.012 0.34 0.05" material="table_edge"/>
+      <geom name="leg_fl" type="box" pos="-0.31 -0.27 -0.16" size="0.025 0.025 0.16" material="table_edge"/>
+      <geom name="leg_fr" type="box" pos="0.31 -0.27 -0.16" size="0.025 0.025 0.16" material="table_edge"/>
+      <geom name="leg_bl" type="box" pos="-0.31 0.27 -0.16" size="0.025 0.025 0.16" material="table_edge"/>
+      <geom name="leg_br" type="box" pos="0.31 0.27 -0.16" size="0.025 0.025 0.16" material="table_edge"/>
+      <geom name="target_marker" type="cylinder" pos="0.18 0 0.039" size="0.11 0.003" material="target_yellow" contype="0" conaffinity="0"/>
+    </body>
+
+    <body name="cyan_basket" pos="0.73 0.18 0.325">
+      <geom name="cyan_basket_base" type="box" size="0.11 0.075 0.012" material="basket_cyan" friction="1.0 0.005 0.0001"/>
+      <geom name="cyan_basket_front" type="box" pos="0 -0.081 0.045" size="0.115 0.008 0.045" material="basket_cyan"/>
+      <geom name="cyan_basket_back" type="box" pos="0 0.081 0.045" size="0.115 0.008 0.045" material="basket_cyan"/>
+      <geom name="cyan_basket_left" type="box" pos="-0.118 0 0.045" size="0.008 0.075 0.045" material="basket_cyan"/>
+      <geom name="cyan_basket_right" type="box" pos="0.118 0 0.045" size="0.008 0.075 0.045" material="basket_cyan"/>
+    </body>
+
+    <body name="magenta_basket" pos="0.73 -0.18 0.325">
+      <geom name="magenta_basket_base" type="box" size="0.11 0.075 0.012" material="basket_magenta" friction="1.0 0.005 0.0001"/>
+      <geom name="magenta_basket_front" type="box" pos="0 -0.081 0.045" size="0.115 0.008 0.045" material="basket_magenta"/>
+      <geom name="magenta_basket_back" type="box" pos="0 0.081 0.045" size="0.115 0.008 0.045" material="basket_magenta"/>
+      <geom name="magenta_basket_left" type="box" pos="-0.118 0 0.045" size="0.008 0.075 0.045" material="basket_magenta"/>
+      <geom name="magenta_basket_right" type="box" pos="0.118 0 0.045" size="0.008 0.075 0.045" material="basket_magenta"/>
+    </body>
+
+    <body name="cola_can" pos="0.49 -0.10 0.385">
+      <freejoint name="cola_freejoint"/>
+      <geom name="cola_can_mesh" type="mesh" mesh="soda_can_mesh" material="soda_can_mat"
+        density="100" friction="0.95 0.3 0.1" solimp="0.998 0.998 0.001" solref="0.001 1" condim="4"/>
+    </body>
+
+    <body name="fruit_lemon" pos="0.49 0.08 0.335">
+      <freejoint name="fruit_freejoint"/>
+      <geom name="fruit_lemon_mesh" type="mesh" mesh="lemon_mesh" material="lemon_mat"
+        density="50" friction="0.95 0.3 0.1" solimp="0.998 0.998 0.001" solref="0.001 1" condim="4"/>
+    </body>
+  </worldbody>
+</mujoco>

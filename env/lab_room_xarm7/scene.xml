@@ -1,0 +1,67 @@
+<mujoco model="xarm7 lab room">
+  <include file="xarm7.xml"/>
+
+  <option timestep="0.002" integrator="implicitfast"/>
+
+  <visual>
+    <headlight diffuse="0.45 0.45 0.45" ambient="0.28 0.28 0.30" specular="0.1 0.1 0.1"/>
+    <rgba haze="0.06 0.07 0.08 1"/>
+    <global azimuth="125" elevation="-20" offwidth="1280" offheight="720"/>
+  </visual>
+
+  <asset>
+    <texture name="floor_tex" type="2d" file="assets/textures/light-gray-floor-tile.png"/>
+    <texture name="wall_tex" type="2d" file="assets/textures/light-gray-plaster.png"/>
+    <texture name="door_tex" type="cube" file="assets/textures/dark-wood.png"/>
+    <texture name="table_tex" type="cube" file="assets/textures/ceramic.png"/>
+    <texture name="metal_tex" type="cube" file="assets/textures/metal.png"/>
+    <texture name="aloha_table_tex" type="2d" file="assets/aloha_table/small_meta_table_diffuse.png"/>
+    <mesh name="aloha_tabletop" file="aloha_table/tabletop.obj"/>
+    <mesh name="aloha_tablelegs" file="aloha_table/tablelegs.obj"/>
+    <material name="floor_mat" texture="floor_tex" texrepeat="5 4" texuniform="true" reflectance="0.03"/>
+    <material name="wall_mat" texture="wall_tex" texrepeat="3 2" texuniform="true" rgba="0.82 0.84 0.86 1"/>
+    <material name="ceiling_mat" texture="wall_tex" texrepeat="3 3" texuniform="true" rgba="0.88 0.88 0.86 1"/>
+    <material name="door_mat" texture="door_tex" texrepeat="2 2" rgba="0.55 0.28 0.12 1" specular="0.25" shininess="0.25"/>
+    <material name="table_mat" texture="table_tex" rgba="0.82 0.84 0.86 1" specular="0.25" shininess="0.25"/>
+    <material name="aloha_table_mat" texture="aloha_table_tex" rgba="1 1 1 1" specular="0.25" shininess="0.35"/>
+    <material name="table_edge_mat" rgba="0.1 0.28 0.42 1" specular="0.2" shininess="0.35"/>
+    <material name="metal_mat" texture="metal_tex" rgba="0.75 0.72 0.66 1" specular="0.65" shininess="0.6"/>
+    <material name="safety_yellow" rgba="1.0 0.78 0.05 1"/>
+  </asset>
+
+  <worldbody>
+    <light name="ceiling_light_1" pos="0 -0.7 2.05" dir="0.1 0.1 -1" directional="true" diffuse="0.75 0.75 0.72" specular="0.15 0.15 0.15"/>
+    <light name="ceiling_light_2" pos="1.2 0.9 2.05" dir="-0.25 -0.2 -1" directional="true" diffuse="0.45 0.50 0.55" specular="0.1 0.1 0.1"/>
+
+    <camera name="room_overview" pos="-1.35 -1.05 1.35" xyaxes="0.524347 -0.851504 0 0.25488 0.156952 0.95415" fovy="58"/>
+    <camera name="door_view" pos="0.25 -0.65 1.05" xyaxes="-0.675056 0.737766 0 -0.0811495 -0.0742518 0.993932" fovy="55"/>
+    <camera name="table_view" pos="1.45 -1.35 1.45" xyaxes="0.882353 0.470588 0 -0.179176 0.335956 0.924678" fovy="52"/>
+
+    <body name="room">
+      <geom name="floor" type="box" pos="0 0 -0.025" size="2.0 1.6 0.025" material="floor_mat" friction="1 0.005 0.0001"/>
+      <geom name="ceiling" type="box" pos="0 0 2.2" size="2.0 1.6 0.035" material="ceiling_mat" contype="0" conaffinity="0"/>
+      <geom name="back_wall" type="box" pos="0 1.6 1.1" size="2.0 0.035 1.1" material="wall_mat"/>
+      <geom name="left_wall" type="box" pos="-2.0 0 1.1" size="0.035 1.6 1.1" material="wall_mat"/>
+      <geom name="right_wall" type="box" pos="2.0 0 1.1" size="0.035 1.6 1.1" material="wall_mat"/>
+      <geom name="front_wall_left" type="box" pos="-1.65 -1.6 1.1" size="0.35 0.035 1.1" material="wall_mat"/>
+      <geom name="front_wall_right" type="box" pos="0.55 -1.6 1.1" size="1.45 0.035 1.1" material="wall_mat"/>
+      <geom name="front_wall_above_door" type="box" pos="-0.75 -1.6 1.95" size="0.55 0.035 0.25" material="wall_mat"/>
+    </body>
+
+    <body name="lab_door" pos="-0.75 -1.565 0.9">
+      <geom name="door_panel" type="box" size="0.45 0.025 0.86" material="door_mat"/>
+      <geom name="door_frame_left" type="box" pos="-0.49 0 0" size="0.035 0.04 0.94" material="metal_mat"/>
+      <geom name="door_frame_right" type="box" pos="0.49 0 0" size="0.035 0.04 0.94" material="metal_mat"/>
+      <geom name="door_frame_top" type="box" pos="0 0 0.91" size="0.52 0.04 0.035" material="metal_mat"/>
+      <geom name="door_handle_base" type="cylinder" pos="0.28 -0.045 0.0" quat="0.707107 0.707107 0 0" size="0.035 0.012" material="metal_mat"/>
+      <geom name="door_handle" type="box" pos="0.20 -0.075 0" size="0.10 0.014 0.025" material="metal_mat"/>
+    </body>
+
+    <body name="table" pos="0.82 0 0.62" quat="0.707107 0 0 0.707107">
+      <geom name="tabletop_visual" mesh="aloha_tabletop" type="mesh" pos="0 0 -0.75" quat="1 0 0 1" material="aloha_table_mat" conaffinity="0" contype="0" group="1"/>
+      <geom name="tablelegs_visual" mesh="aloha_tablelegs" type="mesh" pos="0 0 -0.75" quat="1 0 0 1" material="aloha_table_mat" conaffinity="0" contype="0" group="1"/>
+      <geom name="table_collision" type="box" pos="0 0 -0.1009" size="0.37 0.61 0.10" group="0" friction="1.2 0.005 0.0001" rgba="0.8 0.8 0.8 0"/>
+      <site name="table_top" pos="0 0 0" size="0.001 0.001 0.001" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>
