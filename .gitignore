@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+/env/lab_room_xarm7/snapshots/
+/lerobot/
+.cache/
+/model/**/*.safetensors
+/model/**/*.bin
+/model/**/*.pt
+/model/**/*.pth

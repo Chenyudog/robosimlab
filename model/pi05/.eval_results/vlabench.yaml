@@ -1,0 +1,9 @@
+- dataset:
+    id: VLABench/vlabench_primitive_ft_lerobot_video
+    task_id: overall
+  value: 42.0
+  date: "2026-03-03"
+  source:
+    url: https://allenai.github.io/vla-evaluation-harness/leaderboard/
+    name: "VLA Model Leaderboard"
+    user: merve

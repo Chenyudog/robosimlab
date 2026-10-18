@@ -6,22 +6,15 @@ import mujoco
 import numpy as np
 from PIL import Image
 
+from scene_state import load_scene
 
 ROOT = Path(__file__).resolve().parent
-SCENE = ROOT / "scene.xml"
 
 
 def main() -> None:
-    model = mujoco.MjModel.from_xml_path(str(SCENE))
-    data = mujoco.MjData(model)
-    key_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_KEY, "home")
-    if key_id >= 0:
-        mujoco.mj_resetDataKeyframe(model, data, key_id)
-    else:
-        mujoco.mj_resetData(model, data)
-    mujoco.mj_forward(model, data)
+    model, data = load_scene()
 
-    expected = ("room_overview", "door_view", "table_view", "wrist_camera")
+    expected = ("room_overview", "door_view", "table_view", "wrist_camera", "fixed_camera")
     cameras = {
         mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_CAMERA, camera_id)
         for camera_id in range(model.ncam)

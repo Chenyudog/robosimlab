@@ -16,8 +16,20 @@
     <texture name="table_tex" type="cube" file="assets/textures/ceramic.png"/>
     <texture name="metal_tex" type="cube" file="assets/textures/metal.png"/>
     <texture name="aloha_table_tex" type="2d" file="assets/aloha_table/small_meta_table_diffuse.png"/>
+    <texture name="soda_tex" type="2d" file="assets/textures/soda.png"/>
+    <texture name="glass_tex" type="cube" file="assets/textures/glass.png"/>
+    <texture name="cereal_tex" type="2d" file="assets/textures/cereal.png"/>
+    <texture name="lemon_tex" type="2d" file="assets/textures/lemon.png"/>
+    <texture name="bread_tex" type="2d" file="assets/textures/bread.png"/>
+    <texture name="red_wood_tex" type="cube" file="assets/textures/red-wood.png"/>
     <mesh name="aloha_tabletop" file="aloha_table/tabletop.obj"/>
     <mesh name="aloha_tablelegs" file="aloha_table/tablelegs.obj"/>
+    <mesh name="can_mesh" file="objects/meshes/can.msh"/>
+    <mesh name="bottle_mesh" file="objects/meshes/bottle.stl"/>
+    <mesh name="milk_mesh" file="objects/meshes/milk.msh" scale="0.9 0.9 0.9"/>
+    <mesh name="cereal_mesh" file="objects/meshes/cereal.msh"/>
+    <mesh name="lemon_mesh" file="objects/meshes/lemon.msh" scale="1.5 1 1"/>
+    <mesh name="bread_mesh" file="objects/meshes/bread.stl" scale="0.8 0.8 0.8"/>
     <material name="floor_mat" texture="floor_tex" texrepeat="5 4" texuniform="true" reflectance="0.03"/>
     <material name="wall_mat" texture="wall_tex" texrepeat="3 2" texuniform="true" rgba="0.82 0.84 0.86 1"/>
     <material name="ceiling_mat" texture="wall_tex" texrepeat="3 3" texuniform="true" rgba="0.88 0.88 0.86 1"/>
@@ -27,6 +39,15 @@
     <material name="table_edge_mat" rgba="0.1 0.28 0.42 1" specular="0.2" shininess="0.35"/>
     <material name="metal_mat" texture="metal_tex" rgba="0.75 0.72 0.66 1" specular="0.65" shininess="0.6"/>
     <material name="safety_yellow" rgba="1.0 0.78 0.05 1"/>
+    <material name="coke_mat" texture="soda_tex" texrepeat="5 5" texuniform="true" reflectance="0.7"/>
+    <material name="glass_mat" texture="glass_tex" texrepeat="5 5" texuniform="true" reflectance="0.5" rgba="0.82 0.92 1.0 0.72"/>
+    <material name="milk_mat" texture="table_tex" texrepeat="1 1" texuniform="true" reflectance="0.5"/>
+    <material name="cereal_mat" texture="cereal_tex" texrepeat="1 1" texuniform="false" reflectance="0.5"/>
+    <material name="lemon_mat" texture="lemon_tex" texrepeat="60 50" texuniform="true" reflectance="0.7"/>
+    <material name="bread_mat" texture="bread_tex" texrepeat="15 15" texuniform="true" reflectance="0.7"/>
+    <material name="plate_mat" texture="red_wood_tex" texrepeat="3 3" specular="0.4" shininess="0.1"/>
+    <material name="bin_light_wood" texture="floor_tex" rgba="0.92 0.66 0.35 1" reflectance="0"/>
+    <material name="bin_dark_wood" texture="door_tex" rgba="0.40 0.20 0.10 1" reflectance="0"/>
   </asset>
 
   <worldbody>
@@ -36,6 +57,10 @@
     <camera name="room_overview" pos="-1.35 -1.05 1.35" xyaxes="0.524347 -0.851504 0 0.25488 0.156952 0.95415" fovy="58"/>
     <camera name="door_view" pos="0.25 -0.65 1.05" xyaxes="-0.675056 0.737766 0 -0.0811495 -0.0742518 0.993932" fovy="55"/>
     <camera name="table_view" pos="1.45 -1.35 1.45" xyaxes="0.882353 0.470588 0 -0.179176 0.335956 0.924678" fovy="52"/>
+    <!-- Opposite the robot across the table: XY position mirrors the robot
+         base (0.25, 0) through the table center (0.82, 0). Elevated to see
+         the tabletop and robot together without a side offset. -->
+    <camera name="fixed_camera" mode="fixed" pos="1.39 0 2.10" xyaxes="0 1 0 -0.81799036 0 0.57523193" fovy="58"/>
 
     <body name="room">
       <geom name="floor" type="box" pos="0 0 -0.025" size="2.0 1.6 0.025" material="floor_mat" friction="1 0.005 0.0001"/>
@@ -57,11 +82,100 @@
       <geom name="door_handle" type="box" pos="0.20 -0.075 0" size="0.10 0.014 0.025" material="metal_mat"/>
     </body>
 
+    <!-- Static mount for the xArm7: top face at z=0.62 supports link_base. -->
+    <body name="robot_pedestal" pos="0.25 0 0.31">
+      <geom name="pedestal_column" type="cylinder" size="0.11 0.31" material="metal_mat"/>
+      <geom name="pedestal_foot" type="cylinder" pos="0 0 -0.30" size="0.18 0.01" material="metal_mat"/>
+    </body>
+
     <body name="table" pos="0.82 0 0.62" quat="0.707107 0 0 0.707107">
       <geom name="tabletop_visual" mesh="aloha_tabletop" type="mesh" pos="0 0 -0.75" quat="1 0 0 1" material="aloha_table_mat" conaffinity="0" contype="0" group="1"/>
       <geom name="tablelegs_visual" mesh="aloha_tablelegs" type="mesh" pos="0 0 -0.75" quat="1 0 0 1" material="aloha_table_mat" conaffinity="0" contype="0" group="1"/>
-      <geom name="table_collision" type="box" pos="0 0 -0.1009" size="0.37 0.61 0.10" group="0" friction="1.2 0.005 0.0001" rgba="0.8 0.8 0.8 0"/>
-      <site name="table_top" pos="0 0 0" size="0.001 0.001 0.001" rgba="0 0 0 0"/>
+      <!-- Match the rendered tabletop's length, width, top and bottom. -->
+      <geom name="table_collision" type="box" pos="0 0 -0.007191" size="0.61 0.381 0.007978" group="0" friction="1.2 0.005 0.0001" rgba="0.8 0.8 0.8 0"/>
+      <site name="table_top" pos="0 0 0.000787" size="0.001 0.001 0.001" rgba="0 0 0 0"/>
+
+      <!-- Left/right are relative to the robot facing world +X.
+           Robosuite bin geometry scaled uniformly to 60 percent.
+           Local +Y is world -X: y=0.10 puts the bins at world x=0.72,
+           inside the arm's top-down reach. -->
+      <body name="left_bin" pos="0.45 0.10 0.011587">
+        <geom name="left_bin_base_collision" size="0.096 0.12 0.0108" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="left_bin_base_visual" size="0.096 0.12 0.0108" type="box" conaffinity="0" contype="0" group="1" material="bin_light_wood"/>
+        <geom name="left_bin_back_collision" pos="0 0.12 0.027" size="0.102 0.006 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="left_bin_back_visual" pos="0 0.12 0.027" size="0.102 0.006 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_light_wood"/>
+        <geom name="left_bin_front_collision" pos="0 -0.12 0.027" size="0.102 0.006 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="left_bin_front_visual" pos="0 -0.12 0.027" size="0.102 0.006 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_light_wood"/>
+        <geom name="left_bin_left_collision" pos="-0.096 0 0.027" size="0.006 0.12 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="left_bin_left_visual" pos="-0.096 0 0.027" size="0.006 0.12 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_light_wood"/>
+        <geom name="left_bin_right_collision" pos="0.096 0 0.027" size="0.006 0.12 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="left_bin_right_visual" pos="0.096 0 0.027" size="0.006 0.12 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_light_wood"/>
+      </body>
+
+      <body name="right_bin" pos="-0.45 0.10 0.011587">
+        <geom name="right_bin_base_collision" size="0.096 0.12 0.0108" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="right_bin_base_visual" size="0.096 0.12 0.0108" type="box" conaffinity="0" contype="0" group="1" material="bin_dark_wood"/>
+        <geom name="right_bin_back_collision" pos="0 0.12 0.027" size="0.102 0.006 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="right_bin_back_visual" pos="0 0.12 0.027" size="0.102 0.006 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_dark_wood"/>
+        <geom name="right_bin_front_collision" pos="0 -0.12 0.027" size="0.102 0.006 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="right_bin_front_visual" pos="0 -0.12 0.027" size="0.102 0.006 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_dark_wood"/>
+        <geom name="right_bin_left_collision" pos="-0.096 0 0.027" size="0.006 0.12 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="right_bin_left_visual" pos="-0.096 0 0.027" size="0.006 0.12 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_dark_wood"/>
+        <geom name="right_bin_right_collision" pos="0.096 0 0.027" size="0.006 0.12 0.027" type="box" group="0" friction="1 0.005 0.0001" rgba="0 0 0 0"/>
+        <geom name="right_bin_right_visual" pos="0.096 0 0.027" size="0.006 0.12 0.027" type="box" conaffinity="0" contype="0" group="1" material="bin_dark_wood"/>
+      </body>
+
     </body>
+
+    <body name="cola_can" pos="0.56 -0.22 0.661084003">
+        <freejoint name="cola_can_joint"/>
+        <geom name="cola_can_geom" mesh="can_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" material="coke_mat" group="0" condim="4"/>
+      </body>
+      <body name="glass_bottle_1" pos="0.56 0 0.685644374">
+        <freejoint name="glass_bottle_1_joint"/>
+        <geom name="glass_bottle_1_visual" mesh="bottle_mesh" type="mesh" material="glass_mat" mass="0" contype="0" conaffinity="0" group="1"/>
+        <geom name="glass_bottle_1_collision" mesh="bottle_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="50" friction="0.95 0.3 0.1" rgba="0 0 0 0" group="0"/>
+      </body>
+      <body name="cereal_box" pos="0.72 -0.20 0.695749001">
+        <freejoint name="cereal_box_joint"/>
+        <geom name="cereal_box_geom" mesh="cereal_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="150" friction="0.95 0.3 0.1" material="cereal_mat" group="0" condim="4"/>
+      </body>
+      <body name="milk_carton" pos="0.56 0.22 0.681803403" quat="0.5 0 0 0.866025">
+        <freejoint name="milk_carton_joint"/>
+        <geom name="milk_carton_geom" mesh="milk_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" material="milk_mat" group="0" condim="4"/>
+      </body>
+      <body name="bread" pos="0.70 0.02 0.644038370">
+        <freejoint name="bread_joint"/>
+        <geom name="bread_geom" mesh="bread_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="50" friction="0.95 0.3 0.1" material="bread_mat" group="0" condim="4"/>
+      </body>
+      <body name="fruit_lemon_1" pos="0.72 0.22 0.640715999">
+        <freejoint name="fruit_lemon_1_joint"/>
+        <geom name="fruit_lemon_1_geom" mesh="lemon_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="50" friction="0.95 0.3 0.1" material="lemon_mat" group="0" condim="4"/>
+      </body>
+      <body name="robosuite_plate" pos="0.95 0 0.630787000" quat="0 0 0 1">
+        <freejoint name="robosuite_plate_joint"/>
+        <geom name="plate_left_bar" pos="-0.11 0 0" size="0.06 0.17 0.01" type="box" group="0" material="plate_mat"/>
+        <geom name="plate_right_bar" pos="0.11 0 0" size="0.06 0.17 0.01" type="box" group="0" material="plate_mat"/>
+        <geom name="plate_top_bar" pos="0 0.11 0" size="0.05 0.06 0.01" type="box" group="0" material="plate_mat"/>
+        <geom name="plate_bottom_bar" pos="0 -0.11 0" size="0.05 0.06 0.01" type="box" group="0" material="plate_mat"/>
+      </body>
   </worldbody>
+
+  <!-- Scene home state: 13 robot coordinates followed by each object's
+       freejoint position (xyz) and orientation (wxyz), in worldbody order.
+       The object coordinates must also be present when resetting to home.
+       Arm home: link_tcp at (0.50, 0, 0.95), gripper pointing straight
+       down, wrist camera behind the fingers looking over the table. -->
+  <keyframe>
+    <key name="home" qpos="
+      0 -0.7714 0 0.8223 0 1.5938 -3.1416 0 0 0 0 0 0
+      0.56 -0.22 0.661084003 1 0 0 0
+      0.56 0 0.685644374 1 0 0 0
+      0.72 -0.20 0.695749001 1 0 0 0
+      0.56 0.22 0.681803403 0.5 0 0 0.866025
+      0.70 0.02 0.644038370 1 0 0 0
+      0.72 0.22 0.640715999 1 0 0 0
+      0.95 0 0.630787000 0 0 0 1"
+      ctrl="0 -0.7714 0 0.8223 0 1.5938 -3.1416 0"/>
+  </keyframe>
 </mujoco>
