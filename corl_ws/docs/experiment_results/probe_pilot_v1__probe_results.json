@@ -1,0 +1,226 @@
+{
+  "split": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "validation": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "test": [
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  "samples": {
+    "train": 39,
+    "validation": 14,
+    "test": 17
+  },
+  "constant_test_mse_m2": 0.013747742754083525,
+  "probes": [
+    {
+      "feature": "prefix_0",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.0015065347616715773,
+      "test_mse_m2": 0.005422911706862707,
+      "test_rmse_m": 0.0736404216912336,
+      "test_axis_rmse_m": [
+        0.07338136523615442,
+        0.02088204514958849,
+        0.10221472764253094
+      ],
+      "test_r2_vs_training_mean": 0.6055416657216744,
+      "shuffled_train_rows_test_mse_m2": 0.024758857591219277
+    },
+    {
+      "feature": "prefix_5",
+      "alpha": 0.1,
+      "validation_mse_m2": 0.001087733773900403,
+      "test_mse_m2": 0.00697433267951015,
+      "test_rmse_m": 0.0835124702036178,
+      "test_axis_rmse_m": [
+        0.07923740021143297,
+        0.020778254107836583,
+        0.11921701473570717
+      ],
+      "test_r2_vs_training_mean": 0.4926925238371552,
+      "shuffled_train_rows_test_mse_m2": 0.029368230052589515
+    },
+    {
+      "feature": "prefix_11",
+      "alpha": 0.1,
+      "validation_mse_m2": 0.0012904851384786065,
+      "test_mse_m2": 0.007063108896301668,
+      "test_rmse_m": 0.08404230420628452,
+      "test_axis_rmse_m": [
+        0.08328972402284154,
+        0.02532244207387932,
+        0.11666585828132804
+      ],
+      "test_r2_vs_training_mean": 0.4862350116200934,
+      "shuffled_train_rows_test_mse_m2": 0.019476104234397575
+    },
+    {
+      "feature": "prefix_17",
+      "alpha": 0.1,
+      "validation_mse_m2": 0.0013801949742082667,
+      "test_mse_m2": 0.0073594992853956145,
+      "test_rmse_m": 0.08578752406612289,
+      "test_axis_rmse_m": [
+        0.08542185890882965,
+        0.024782257858800456,
+        0.11902707075353391
+      ],
+      "test_r2_vs_training_mean": 0.46467580772781014,
+      "shuffled_train_rows_test_mse_m2": 0.019703737534040523
+    },
+    {
+      "feature": "expert_0_denoise0",
+      "alpha": 0.1,
+      "validation_mse_m2": 0.0002461109654685524,
+      "test_mse_m2": 0.00473232401365249,
+      "test_rmse_m": 0.068791889156008,
+      "test_axis_rmse_m": [
+        0.06338169445731642,
+        0.027136674205367653,
+        0.09717681699741246
+      ],
+      "test_r2_vs_training_mean": 0.6557744716130336,
+      "shuffled_train_rows_test_mse_m2": 0.01158202502727645
+    },
+    {
+      "feature": "expert_5_denoise0",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.00012232133094945986,
+      "test_mse_m2": 0.002819181635969741,
+      "test_rmse_m": 0.05309596628718363,
+      "test_axis_rmse_m": [
+        0.05720699236606714,
+        0.0319599266842039,
+        0.06452494105908405
+      ],
+      "test_r2_vs_training_mean": 0.7949349441287478,
+      "shuffled_train_rows_test_mse_m2": 0.027532919948993144
+    },
+    {
+      "feature": "expert_11_denoise0",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.00010537816889338725,
+      "test_mse_m2": 0.003993832573134933,
+      "test_rmse_m": 0.06319677660399249,
+      "test_axis_rmse_m": [
+        0.06781902482349872,
+        0.03152762588178456,
+        0.0799255053012034
+      ],
+      "test_r2_vs_training_mean": 0.7094917584234957,
+      "shuffled_train_rows_test_mse_m2": 0.03377865625930209
+    },
+    {
+      "feature": "expert_17_denoise0",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.00010021283546916352,
+      "test_mse_m2": 0.003954916189709786,
+      "test_rmse_m": 0.06288812439332077,
+      "test_axis_rmse_m": [
+        0.06744954780244496,
+        0.030530799570112056,
+        0.07989478924175654
+      ],
+      "test_r2_vs_training_mean": 0.7123225055593183,
+      "shuffled_train_rows_test_mse_m2": 0.037106251766823674
+    },
+    {
+      "feature": "expert_0_denoise9",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.0006781944739939804,
+      "test_mse_m2": 0.004645714869194497,
+      "test_rmse_m": 0.06815948113941667,
+      "test_axis_rmse_m": [
+        0.09841888818407751,
+        0.030746364711524306,
+        0.057493722380964965
+      ],
+      "test_r2_vs_training_mean": 0.6620743526922215,
+      "shuffled_train_rows_test_mse_m2": 0.04540364366744242
+    },
+    {
+      "feature": "expert_5_denoise9",
+      "alpha": 100.0,
+      "validation_mse_m2": 0.00018979442046470197,
+      "test_mse_m2": 0.0038318914904282293,
+      "test_rmse_m": 0.061902273709680725,
+      "test_axis_rmse_m": [
+        0.06777264202332059,
+        0.03253020584576383,
+        0.07644821235382657
+      ],
+      "test_r2_vs_training_mean": 0.7212712254679021,
+      "shuffled_train_rows_test_mse_m2": 0.020342174780495565
+    },
+    {
+      "feature": "expert_11_denoise9",
+      "alpha": 1.0,
+      "validation_mse_m2": 0.00031703877397361334,
+      "test_mse_m2": 0.0045101303782709365,
+      "test_rmse_m": 0.06715750425880146,
+      "test_axis_rmse_m": [
+        0.0741869119772008,
+        0.049896023188720225,
+        0.07441155888738363
+      ],
+      "test_r2_vs_training_mean": 0.6719366619708329,
+      "shuffled_train_rows_test_mse_m2": 0.18087572499281493
+    },
+    {
+      "feature": "expert_17_denoise9",
+      "alpha": 10.0,
+      "validation_mse_m2": 0.00025186652001271204,
+      "test_mse_m2": 0.00422231143873259,
+      "test_rmse_m": 0.06497931546832876,
+      "test_axis_rmse_m": [
+        0.07312335169266376,
+        0.03354713344335675,
+        0.07870514335901048
+      ],
+      "test_r2_vs_training_mean": 0.6928723853609767,
+      "shuffled_train_rows_test_mse_m2": 0.030383034725857037
+    },
+    {
+      "feature": "state",
+      "alpha": 0.1,
+      "validation_mse_m2": 9.721908034790793e-05,
+      "test_mse_m2": 0.0011747924636377445,
+      "test_rmse_m": 0.034275245639349465,
+      "test_axis_rmse_m": [
+        0.05555657734322547,
+        0.01880406250427355,
+        0.009178852768990982
+      ],
+      "test_r2_vs_training_mean": 0.914546519770397,
+      "shuffled_train_rows_test_mse_m2": 0.045399120060945146
+    }
+  ],
+  "limitations": [
+    "One task and four held-out trajectories; no significance claim.",
+    "Layer selection by validation only; test is descriptive, not for subsequent tuning.",
+    "Decodability is not causal use; state baseline may explain phase correlations.",
+    "Pooled activations can miss spatial information; shuffled rows are a weak negative control."
+  ]
+}

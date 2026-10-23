@@ -1,0 +1,16 @@
+models/
+data/
+runtime/.venv/
+outputs/
+logs/
+__pycache__/
+*.pyc
+reference/pi0_representation/outputs/
+reference/pi0_representation/logs/
+runtime/legacy_pi0/
+runtime/weights/
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.log

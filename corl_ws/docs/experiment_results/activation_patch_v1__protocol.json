@@ -1,0 +1,19 @@
+{
+  "selected_feature": "expert_17_denoise0",
+  "selection": "minimum validation MSE only",
+  "initial_states": [
+    16,
+    17,
+    18,
+    19
+  ],
+  "shift_m": 0.005,
+  "seed": 7,
+  "patch": "whole selected block output at a single forward call; same recipient input and noise",
+  "conditions": [
+    "identity",
+    "shifted_observation_donor",
+    "channel_permuted_donor"
+  ],
+  "scope": "Single-observation action sensitivity. Not closed-loop recovery, natural circuit, or task success."
+}

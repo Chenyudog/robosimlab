@@ -1,0 +1,5 @@
+benchmark_root: /home/cyd/robosimlab/vla_feedback/runtime/.venv/lib/python3.12/site-packages/libero/libero
+bddl_files: /home/cyd/robosimlab/vla_feedback/runtime/.venv/lib/python3.12/site-packages/libero/libero/bddl_files
+init_states: /home/cyd/robosimlab/vla_feedback/runtime/.venv/lib/python3.12/site-packages/libero/libero/init_files
+datasets: /home/cyd/robosimlab/vla_feedback/data/libero_pi
+assets: /home/cyd/.cache/libero/assets

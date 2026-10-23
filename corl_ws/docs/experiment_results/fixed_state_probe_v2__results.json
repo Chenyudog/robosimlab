@@ -1,0 +1,186 @@
+{
+  "split": {
+    "train": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "validation": [
+      32,
+      33,
+      34,
+      35
+    ],
+    "test": [
+      36,
+      37,
+      38,
+      39
+    ]
+  },
+  "samples": {
+    "train": 91,
+    "validation": 29,
+    "test": 31
+  },
+  "selected_by_validation": "prefix_0",
+  "constant_test_rmse_mm": 5.531209381522817,
+  "probes": [
+    {
+      "feature": "prefix_0",
+      "alpha": 1000.0,
+      "validation_mse_m2": 1.4518909473546917e-05,
+      "test_mse_m2": 1.9255927514012336e-05,
+      "test_coordinate_rmse_mm": 4.388157644617196,
+      "test_r2_vs_training_mean": 0.37060361406378417,
+      "test_correct_direction_fraction": 0.8064516129032258,
+      "shuffled_train_label_test_rmse_mm": 5.702261548187018
+    },
+    {
+      "feature": "prefix_5",
+      "alpha": 1000.0,
+      "validation_mse_m2": 1.5097038727479023e-05,
+      "test_mse_m2": 1.984938226332372e-05,
+      "test_coordinate_rmse_mm": 4.455264555929728,
+      "test_r2_vs_training_mean": 0.3512060402953193,
+      "test_correct_direction_fraction": 0.8387096774193549,
+      "shuffled_train_label_test_rmse_mm": 5.724976100909897
+    },
+    {
+      "feature": "prefix_11",
+      "alpha": 1000.0,
+      "validation_mse_m2": 1.5163199206088174e-05,
+      "test_mse_m2": 1.9644428607957784e-05,
+      "test_coordinate_rmse_mm": 4.432203583767084,
+      "test_r2_vs_training_mean": 0.357905125025352,
+      "test_correct_direction_fraction": 0.8387096774193549,
+      "shuffled_train_label_test_rmse_mm": 5.725336359302611
+    },
+    {
+      "feature": "prefix_17",
+      "alpha": 1000.0,
+      "validation_mse_m2": 1.5224479546032734e-05,
+      "test_mse_m2": 2.0056861447904122e-05,
+      "test_coordinate_rmse_mm": 4.4784887459838645,
+      "test_r2_vs_training_mean": 0.34442440649259165,
+      "test_correct_direction_fraction": 0.8387096774193549,
+      "shuffled_train_label_test_rmse_mm": 5.764580146161445
+    },
+    {
+      "feature": "expert_0_denoise0",
+      "alpha": 1000.0,
+      "validation_mse_m2": 2.8010712538405128e-05,
+      "test_mse_m2": 2.932623952146147e-05,
+      "test_coordinate_rmse_mm": 5.415370672582022,
+      "test_r2_vs_training_mean": 0.041446891899852734,
+      "test_correct_direction_fraction": 0.5806451612903226,
+      "shuffled_train_label_test_rmse_mm": 5.440336503948355
+    },
+    {
+      "feature": "expert_5_denoise0",
+      "alpha": 1000.0,
+      "validation_mse_m2": 2.7435018138294544e-05,
+      "test_mse_m2": 3.0440563893139187e-05,
+      "test_coordinate_rmse_mm": 5.5172967921926395,
+      "test_r2_vs_training_mean": 0.00502425103852655,
+      "test_correct_direction_fraction": 0.6129032258064516,
+      "shuffled_train_label_test_rmse_mm": 6.2469993131016
+    },
+    {
+      "feature": "expert_11_denoise0",
+      "alpha": 1000.0,
+      "validation_mse_m2": 2.929595032818365e-05,
+      "test_mse_m2": 3.103062684076701e-05,
+      "test_coordinate_rmse_mm": 5.570514055342381,
+      "test_r2_vs_training_mean": -0.014262458804017886,
+      "test_correct_direction_fraction": 0.5161290322580645,
+      "shuffled_train_label_test_rmse_mm": 6.200311427367495
+    },
+    {
+      "feature": "expert_17_denoise0",
+      "alpha": 1000.0,
+      "validation_mse_m2": 2.9836310390683367e-05,
+      "test_mse_m2": 3.100266071987333e-05,
+      "test_coordinate_rmse_mm": 5.568003297401442,
+      "test_r2_vs_training_mean": -0.013348362331317087,
+      "test_correct_direction_fraction": 0.5161290322580645,
+      "shuffled_train_label_test_rmse_mm": 6.115619530103932
+    },
+    {
+      "feature": "expert_0_denoise9",
+      "alpha": 1000.0,
+      "validation_mse_m2": 3.351749095248743e-05,
+      "test_mse_m2": 3.503712774157044e-05,
+      "test_coordinate_rmse_mm": 5.919216818259865,
+      "test_r2_vs_training_mean": -0.14521835201564692,
+      "test_correct_direction_fraction": 0.41935483870967744,
+      "shuffled_train_label_test_rmse_mm": 5.78590254690875
+    },
+    {
+      "feature": "expert_5_denoise9",
+      "alpha": 1000.0,
+      "validation_mse_m2": 3.263731597060943e-05,
+      "test_mse_m2": 3.438273928318817e-05,
+      "test_coordinate_rmse_mm": 5.8636796709223615,
+      "test_r2_vs_training_mean": -0.12382910808520231,
+      "test_correct_direction_fraction": 0.45161290322580644,
+      "shuffled_train_label_test_rmse_mm": 5.798722108926437
+    },
+    {
+      "feature": "expert_11_denoise9",
+      "alpha": 1000.0,
+      "validation_mse_m2": 3.223444075804949e-05,
+      "test_mse_m2": 3.30839160418442e-05,
+      "test_coordinate_rmse_mm": 5.751861963038073,
+      "test_r2_vs_training_mean": -0.08137596458032625,
+      "test_correct_direction_fraction": 0.41935483870967744,
+      "shuffled_train_label_test_rmse_mm": 5.749157702603984
+    },
+    {
+      "feature": "expert_17_denoise9",
+      "alpha": 1000.0,
+      "validation_mse_m2": 3.3000189208169744e-05,
+      "test_mse_m2": 3.355784192283217e-05,
+      "test_coordinate_rmse_mm": 5.7929130774449025,
+      "test_r2_vs_training_mean": -0.096866635516764,
+      "test_correct_direction_fraction": 0.45161290322580644,
+      "shuffled_train_label_test_rmse_mm": 5.784137415816155
+    },
+    {
+      "feature": "pixel_mean",
+      "alpha": 0.1,
+      "validation_mse_m2": 1.024138910770196e-06,
+      "test_mse_m2": 5.835174321251762e-06,
+      "test_coordinate_rmse_mm": 2.4156105483400596,
+      "test_r2_vs_training_mean": 0.8092723590473048,
+      "test_correct_direction_fraction": 1.0,
+      "shuffled_train_label_test_rmse_mm": 5.598944915321481
+    },
+    {
+      "feature": "state_delta",
+      "alpha": 0.1,
+      "validation_mse_m2": 3.0404353130764653e-05,
+      "test_mse_m2": 3.0594277222246026e-05,
+      "test_coordinate_rmse_mm": 5.531209381522817,
+      "test_r2_vs_training_mean": 0.0,
+      "test_correct_direction_fraction": 0.5161290322580645,
+      "shuffled_train_label_test_rmse_mm": 5.531209381522817
+    }
+  ],
+  "limitations": [
+    "One task, four held-out scenes; exploratory, no significance claim.",
+    "Robot state, inference noise and task text fixed within each scene. Target labels never enter policy.",
+    "Physically invalid shifts excluded individually; axes and directions may have unequal coverage.",
+    "Readout of imposed image changes is not proof of action use, object semantics or closed-loop correction.",
+    "Correct direction metric measures positive dot product, not precise angle accuracy."
+  ]
+}

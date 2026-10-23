@@ -1,0 +1,21 @@
+{
+  "time": "2026-10-22T15:26:34.091360",
+  "moves": [
+    {
+      "old": "/home/cyd/ca_repro",
+      "new": "/home/cyd/robosimlab/vla_feedback/runtime",
+      "status": "moved_with_compatibility_link"
+    },
+    {
+      "old": "/home/cyd/pi0_representation",
+      "new": "/home/cyd/robosimlab/vla_feedback/reference/pi0_representation",
+      "status": "moved_with_compatibility_link"
+    },
+    {
+      "old": "/home/cyd/datasets/libero_pi",
+      "new": "/home/cyd/robosimlab/vla_feedback/data/libero_pi",
+      "status": "moved_with_compatibility_link"
+    }
+  ],
+  "root": "/home/cyd/robosimlab/vla_feedback"
+}

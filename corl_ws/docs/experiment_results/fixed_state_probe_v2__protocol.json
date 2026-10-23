@@ -1,0 +1,93 @@
+{
+  "initial_states": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "split": {
+    "train": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "validation": [
+      32,
+      33,
+      34,
+      35
+    ],
+    "test": [
+      36,
+      37,
+      38,
+      39
+    ]
+  },
+  "shifts_axis_metres": [
+    [
+      0,
+      -0.01
+    ],
+    [
+      0,
+      -0.005
+    ],
+    [
+      0,
+      0.005
+    ],
+    [
+      0,
+      0.01
+    ],
+    [
+      1,
+      -0.01
+    ],
+    [
+      1,
+      -0.005
+    ],
+    [
+      1,
+      0.005
+    ],
+    [
+      1,
+      0.01
+    ]
+  ],
+  "task_id": 0,
+  "seed": 7,
+  "target": "akita_black_bowl_1",
+  "features": "shifted minus nominal pooled activations; same state and noise",
+  "target_label": "requested world x,y displacement in metres; no label input to policy",
+  "sampling": "After10 settle steps at reset, no physics step after each target displacement.",
+  "scope": "New exploratory scenes; not robot success or feedback repair. Fixed-state control excludes state change."
+}

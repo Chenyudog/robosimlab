@@ -1,0 +1,21 @@
+{
+  "packages": {
+    "torch": "2.11.0",
+    "transformers": "5.5.4",
+    "accelerate": "1.14.0",
+    "safetensors": "0.8.0",
+    "pyarrow": "25.0.0",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.1",
+    "sentencepiece": "0.2.2"
+  },
+  "source_sha256": {
+    "/home/cyd/lerobot/src/lerobot/policies/pi0/modeling_pi0.py": "bd652739133e12c9284acf4c20055bb0a7d34f1b392c1e6355d6fcf8fcb3f032",
+    "/home/cyd/lerobot/src/lerobot/policies/pi_gemma.py": "c8acd41f8889af6c56713432929608f6681e764a7288c498e092bd308bb848e0"
+  },
+  "checkpoint_bytes": 14005618584,
+  "checkpoint_header_sha256": "b13b1071af6b457b0207b60eafe121c8829082338773526cfa4a64d1e93ba369",
+  "checkpoint_note": "Header fingerprint only, not a full weight checksum",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 580.178.04"
+}

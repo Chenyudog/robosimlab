@@ -1,0 +1,13 @@
+{
+  "lerobot": {
+    "tag": "v0.4.4",
+    "revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a"
+  },
+  "transformers": {
+    "branch": "fix/lerobot_openpi",
+    "revision": "dcddb970176382c0fcf4521b0c0e6fc15894dfe0",
+    "version": "4.53.3"
+  },
+  "simulation": "Shared tested LIBERO runtime site-packages follows legacy environment site-packages but precedes conda global site-packages.",
+  "verified_environment_smoke_log": "logs/legacy_sim_check.log"
+}

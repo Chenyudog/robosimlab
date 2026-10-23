@@ -1,0 +1,86 @@
+{
+  "split": {
+    "train": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "validation": [
+      32,
+      33,
+      34,
+      35
+    ],
+    "test": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "objects": {
+    "target": "akita_black_bowl_1",
+    "distractor": "akita_black_bowl_2"
+  },
+  "layers": [
+    0,
+    5,
+    11,
+    17
+  ],
+  "shifts": [
+    [
+      0,
+      -0.01
+    ],
+    [
+      0,
+      -0.005
+    ],
+    [
+      0,
+      0.005
+    ],
+    [
+      0,
+      0.01
+    ],
+    [
+      1,
+      -0.01
+    ],
+    [
+      1,
+      -0.005
+    ],
+    [
+      1,
+      0.005
+    ],
+    [
+      1,
+      0.01
+    ]
+  ],
+  "prefix_pool": "Two cameras each4x4 spatial cells, mean within each4x4 token cell; retain channels",
+  "expert_pool": "Action positions0,10,25,49 (suffix index1,11,26,50), denoise0 and9",
+  "vision_execution": "FP32 vision tower/projector on GPU; BF16 language/expert on GPU; vocabulary embedding on CPU",
+  "training": "Fit target-shift displacement decoder on target samples only; evaluate on target and distractor shifts",
+  "controls": "pixel RGB mean; zero state change; within-scene shuffled training labels",
+  "scope": "Exploratory single-task readout. Fresh test scenes40..49; no causal/closed-loop claim."
+}
